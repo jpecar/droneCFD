@@ -42,12 +42,9 @@ writeInterval   500;
 
 purgeWrite      0;
 
-//writeFormat     binary;
-writeFormat     ascii;
+writeFormat     binary;
 
 writePrecision  7;
-
-writeCompression uncompressed;
 
 timeFormat      general;
 
@@ -61,11 +58,12 @@ functions{
         {
             type forces;
             functionObjectLibs ( "libforces.so" );
-            outputControl timeStep;
+            writeControl timeStep;
+	    writeInterval 50;
             timeInterval 1;
             log yes;
             patches ( Aircraft );
-            rhoName rhoInf; // Indicates incompressible
+            rho rhoInf; // Indicates incompressible
             rhoInf 1; // Redundant for incompressible
             liftDir (0 0 1);
             dragDir (1 0 0);
@@ -80,11 +78,12 @@ functions{
         {
             type forceCoeffs;
             functionObjectLibs ( "libforces.so" );
-            outputControl timeStep;
+            writeControl timeStep;
+	    writeInterval 50;
             timeInterval 1;
             log yes;
             patches ( Aircraft );
-            rhoName rhoInf; // Indicates incompressible
+            rho rhoInf; // Indicates incompressible
             rhoInf 1; // Redundant for incompressible
             liftDir (0 0 1);
             dragDir (1 0 0);

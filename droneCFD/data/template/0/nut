@@ -12,37 +12,34 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volScalarField;
-    object      epsilon;
+    object      nut;
 }
 
-dimensions      [0 2 -3 0 0 0 0];
+dimensions      [0 2 -1 0 0 0 0];
 
-internalField   uniform 1.8239;
+internalField   uniform 0;
 
 boundaryField
 {
-
     inlet
     {
         type fixedValue;
         value $internalField;
     }
-
     outlet
     {
         type fixedValue;
         value $internalField;
     }
-
     walls
     {
-        type  epsilonWallFunction;
-	value $internalField;
+        type kqRWallFunction;
+        value $internalField;
     }
 
     Aircraft
     {
-        type  epsilonWallFunction;
-	value $internalField;
+        type kqRWallFunction;
+        value $internalField;
     }
 }

@@ -58,6 +58,10 @@ solvers
         relTol           0.1;
         nSweeps          1;
     };
+    Phi
+    {
+	$p;
+    }
 }
 
 SIMPLE
