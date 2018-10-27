@@ -25,6 +25,7 @@ gradSchemes
 {
     default         Gauss linear;
     grad(U)         cellLimited Gauss linear 1;
+    grad(nuTilda)   cellLimited Gauss linear 1;
 }
 
 divSchemes
@@ -34,6 +35,7 @@ divSchemes
     div(phi,k)      bounded Gauss upwind;
     div(phi,omega)  bounded Gauss upwind;
     div((nuEff*dev2(T(grad(U))))) Gauss linear;
+    div(phi,nuTilda) bounded Gauss upwind;
 }
 
 laplacianSchemes

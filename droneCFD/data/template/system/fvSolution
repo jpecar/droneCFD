@@ -32,7 +32,14 @@ solvers
         mergeLevels      1;
     };
 
-    U
+    pFinal
+    {
+        $p;
+        tolerance       1e-6;
+        relTol          0;
+    }
+
+    "(U|nuTilda)"
     {
         solver           smoothSolver;
         smoother         GaussSeidel;
@@ -49,6 +56,14 @@ solvers
         relTol           0.1;
         nSweeps          1;
     };
+
+    kFinal
+    {
+        solver          PBiCG;
+        preconditioner  DILU;
+        tolerance       1e-07;
+        relTol          0;
+    }
 
     omega
     {
@@ -78,7 +93,7 @@ SIMPLE
 }
 potentialFlow
 {
-nNonOrthogonalCorrectors 10;
+    nNonOrthogonalCorrectors 10;
 }
 
 relaxationFactors
@@ -87,6 +102,7 @@ relaxationFactors
     U               0.7;
     k               0.7;
     omega           0.7;
+    nuTilda	    0.5;
 }
 
 // ************************************************************************* //

@@ -17,7 +17,7 @@ FoamFile
 
 dimensions      [0 2 -1 0 0 0 0];
 
-internalField   uniform 0;
+internalField   uniform 0.05;
 
 boundaryField
 {
@@ -29,6 +29,7 @@ boundaryField
     outlet
     {
         type fixedValue;
+	inletValue $internalField;
         value $internalField;
     }
     walls
@@ -40,6 +41,6 @@ boundaryField
     Aircraft
     {
         type kqRWallFunction;
-        value $internalField;
+        value uniform 0;
     }
 }

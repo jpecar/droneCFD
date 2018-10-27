@@ -12,8 +12,8 @@ FoamFile
     version         2.0;
     format          ascii;
 
-    root            "/home/penfold/mattijs/foam/mattijs2.1/run/icoFoam";
-    case            "cavity";
+    root            "/tmp";
+    case            "Aircraft";
     instance        "system";
     local           "";
 
